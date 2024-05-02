@@ -38,6 +38,17 @@ const HeroSection = () => {
             }}
             className="bg-white text-green-700 mt-6 font-semibold py-2 px-6 rounded-full right-5 md:absolute bottom-5 hover:bg-blue-100 transition duration-300"
           >
+            Create School System
+          </button>
+          <button
+            onClick={() => {
+              // @ts-ignore
+              document
+                .getElementById("continueReading")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+            className="bg-white text-green-700 mt-6 font-semibold py-2 px-6 rounded-full right-5 md:absolute bottom-5 hover:bg-blue-100 transition duration-300"
+          >
             Continue reading
           </button>
         </div>
