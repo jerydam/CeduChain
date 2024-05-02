@@ -9,8 +9,8 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "cuberhack",
-  description: "cuberhack: Personalized Learning with Blockchain and AI (MVP)",
+  title: "Ceduchain",
+  description: "Ceduchain: Personalized Learning with Blockchain and AI (MVP)",
 };
 
 export default function RootLayout({

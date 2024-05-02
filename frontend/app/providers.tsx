@@ -22,6 +22,7 @@ import {
   klaytnBaobab,
   klaytn,
   polygon,
+  celo,
   sepolia,
 } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -30,7 +31,7 @@ import { WagmiProvider } from "wagmi";
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  appName: "cuberhack",
+  appName: "Ceduchain",
   projectId: "43729b23db241dc0e811f7cbe2318b3b",
   wallets: [
     ...wallets,
@@ -46,6 +47,7 @@ const config = getDefaultConfig({
     klaytn,
     optimism,
     arbitrum,
+    celo,
     base,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
   ],

@@ -9,7 +9,7 @@ async function main() {
     console.log(`Account balance: ${(await deployer.provider.getBalance(deployerAddr)).toString()}`);
 
 
-    const SchoolSystem = await ethers.deployContract("SchoolSystem", ["EduChain", "EC"]);
+    const SchoolSystem = await ethers.deployContract("SchoolSystem", ["Ceduchain", "EC"]);
     await SchoolSystem.waitForDeployment();
 
     console.log(`Congratulations! You have just successfully SchoolSystem.`);

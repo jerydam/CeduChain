@@ -14,7 +14,7 @@ const Header = () => {
             height={50}
             src={"/logo.jpeg"}
           />
-          <span className="font-bold text-black">EduChain</span>
+          <span className="font-bold text-black">Ceduchain</span>
         </div>
         <div className="text-sm font-medium ml-auto">
           <ConnectButton label="Sign up or Sign in" />

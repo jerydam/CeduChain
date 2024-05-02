@@ -1,6 +1,6 @@
-# cuberhack: Personalized Learning with Blockchain and AI (MVP)
+# Ceduchain: Personalized Learning with Blockchain and AI (MVP)
 
-Cuberhack is building a revolutionary personalized learning system build on [Klaytn](https://docs.klaytn.foundation/docs/build/get-started/) that leverages the power of blockchain and AI to create an engaging and rewarding educational experience. Our Minimum Viable Product (MVP) focuses on core functionalities to validate the concept and gather user feedback for future iterations.
+Ceduchain is building a revolutionary personalized learning system build on [Klaytn](https://docs.klaytn.foundation/docs/build/get-started/) that leverages the power of blockchain and AI to create an engaging and rewarding educational experience. Our Minimum Viable Product (MVP) focuses on core functionalities to validate the concept and gather user feedback for future iterations.
 
 
 ## Key Features:
@@ -53,4 +53,4 @@ Cuberhack is building a revolutionary personalized learning system build on [Kla
 3. Pilot test the MVP with a small group of students and educators.
 4. Gather feedback and iterate based on user experience to improve the platform.
 
-Cuberhack's personalized learning system has the potential to revolutionize education by creating a dynamic, secure, and rewarding learning environment for all.
+Ceduchain's personalized learning system has the potential to revolutionize education by creating a dynamic, secure, and rewarding learning environment for all.

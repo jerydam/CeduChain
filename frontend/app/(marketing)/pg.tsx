@@ -26,7 +26,7 @@ export default function Delete() {
           <div className="container mx-auto px-4 py-8">
             <header className="flex justify-between items-end mb-8 w-fit">
               <h1 className="text-3xl font-bold text-gray-800">
-                EduChain{": "}
+                Ceduchain{": "}
               </h1>
               <p className="text-xs text-gray-600 ">
                 Personalized Learning with Blockchain and AI (MVP)
@@ -39,7 +39,7 @@ export default function Delete() {
                   Revolutionizing Education
                 </h2>
                 <p className="text-xl text-gray-600 mt-4">
-                  EduChain leverages the power of blockchain and AI to create a
+                  Ceduchain leverages the power of blockchain and AI to create a
                   dynamic, secure, and rewarding learning experience for all.
                 </p>
                 <div className="mt-8">
@@ -202,7 +202,7 @@ export default function Delete() {
             Privacy
           </Link>
         </nav>
-        <p>&copy; Cuberhack 2024</p>
+        <p>&copy; Ceduchain 2024</p>
       </footer>
     </div>
   );
