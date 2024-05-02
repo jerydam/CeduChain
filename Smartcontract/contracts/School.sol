@@ -1,12 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.19;
 
-import "@klaytn/contracts/KIP/token/KIP17/KIP17.sol";
-import "@klaytn/contracts/utils/Counters.sol";
-import "@klaytn/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract SchoolSystem is KIP17, Ownable {
+contract SchoolSystem is ERC721, Ownable {
     using Counters for Counters.Counter;
+
+    Counters.Counter private _tokenIdCounter;
 
     uint private courseCount;
     uint private lecturerCount;
@@ -24,6 +26,7 @@ contract SchoolSystem is KIP17, Ownable {
     mapping(address => uint[]) public studentCourses; // Track courses registered by each student
     mapping(address => mapping(uint => uint)) private studentSessionAttendance; // Track student attendance for each session
     mapping(address => bool) private lecturerHasCourse;
+    mapping(address => bool) private isAdmin;
 
     // Event emitted when a student registers for a course
     event StudentRegistered(string courseName, address student);
@@ -31,6 +34,7 @@ contract SchoolSystem is KIP17, Ownable {
     event StudentRegistered(uint courseId, address student);
     event ClassSessionCreated(uint id, uint courseId, uint timestamp);
     event AttendanceMarked(uint sessionId, address student);
+    event AdminAdded(address newAdmin);
 
     struct Course {
         uint id;
@@ -51,7 +55,7 @@ contract SchoolSystem is KIP17, Ownable {
     }
 
     modifier onlyAdmin() {
-        require(msg.sender == owner(), "Only admin can perform this action");
+        require(isAdmin[msg.sender], "Only admin can perform this action");
         _;
     }
 
@@ -68,14 +72,18 @@ contract SchoolSystem is KIP17, Ownable {
         _;
     }
 
-    constructor(string memory name, string memory symbol) KIP17(name, symbol) {}
-
-    // Function to transfer ownership
-    function transferOwnership(address newOwner) public override {
-        _transferOwnership(newOwner);
+    constructor(string memory name, string memory symbol) ERC721(name, symbol) Ownable(msg.sender){
+        isAdmin[msg.sender] = true; // Set the deployer as admin by default
     }
 
-    function employ_Lecturer(
+    // Function to transfer ownership
+    function transferOwnership(address newOwner) public override onlyOwner {
+        super.transferOwnership(newOwner);
+        isAdmin[newOwner] = true; // Add the new owner as admin
+        emit AdminAdded(newOwner);
+    }
+
+    function employLecturer(
         address _lecturer,
         uint _amount
     ) external onlyAdmin {
@@ -85,8 +93,8 @@ contract SchoolSystem is KIP17, Ownable {
         lecturerCount++;
     }
 
-    function admit_student(address _student, uint _amount) external onlyAdmin {
-        require(!isStudent[_student], "student already exists");
+    function admitStudent(address _student, uint _amount) external onlyAdmin {
+        require(!isStudent[_student], "Student already exists");
         studentTokens[_student] += _amount;
         isStudent[_student] = true;
         students.push(_student);
@@ -163,7 +171,7 @@ contract SchoolSystem is KIP17, Ownable {
             false
         );
         emit ClassSessionCreated(sessionId, _courseId, _timestamp);
-        _mint(msg.sender, sessionId);
+        _safeMint(msg.sender, sessionId);
         courses[_courseId].sessionId = sessionId;
     }
 

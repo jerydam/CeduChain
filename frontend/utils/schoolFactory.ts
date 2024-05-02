@@ -1,4 +1,4 @@
-export const sfAddress = "0x74ae2a5c199329fa27184a3a458557392b4b8582"
+export const sfAddress = "0x7370f36B7eF398B9c5e840c768FA1794eA7cbC37"
 export const sfABI = [
 	{
 		"anonymous": false,
