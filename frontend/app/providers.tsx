@@ -50,6 +50,7 @@ const config = getDefaultConfig({
     arbitrum,
     celo,
     base,
+    celoAlfajores,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
   ],
   ssr: true,
