@@ -21,7 +21,6 @@ contract SchoolSystemFactory {
         emit SchoolSystemDeployed(newSchoolAddress, msg.sender); // Emit an event
     }
 
-    
     // Function to get the number of deployed SchoolSystem contracts
     function getDeployedSchoolSystemsCount() external view returns (uint) {
         return deployedSchoolSystems.length;
@@ -30,5 +29,27 @@ contract SchoolSystemFactory {
     // Function to return all schools created by an address
     function getSchoolsByOwner(address owner) external view returns (address[] memory) {
         return schoolsByOwner[owner];
+    }
+
+    // Function to get the owner of a specific school
+    function getSchoolOwner(address schoolAddress) external view returns (address) {
+        return schoolOwners[schoolAddress];
+    }
+
+    // Function to check if a school exists
+    function schoolExists(address schoolAddress) external view returns (bool) {
+        return schoolOwners[schoolAddress] != address(0);
+    }
+
+    // Function to get details of a specific school
+    function getSchoolDetails(address schoolAddress) external view returns (string memory name, string memory symbol, address owner) {
+        SchoolSystem school = SchoolSystem(schoolAddress);
+        return (school.name(), school.symbol(), schoolOwners[schoolAddress]);
+    }
+
+    // Modifier to restrict access to certain functions only to the owner of a school
+    modifier onlySchoolOwner(address schoolAddress) {
+        require(msg.sender == schoolOwners[schoolAddress], "Only the owner of the school can call this function");
+        _;
     }
 }
